@@ -1,0 +1,89 @@
+ @import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+ @import 'https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap';
+
+ /*
+
+
+ */
+ body {
+   font-family: 'Roboto', sans-serif;
+   font-size: 1.3em
+   margin: 15px;
+ }
+
+header {
+  margin: 10px;
+
+
+}
+
+
+
+ table {
+   width: 100%;
+   margin: 10px;
+ }
+
+
+
+ .ingredienser {
+   font-weight: bold;
+ }
+
+ #val {
+   color: white;
+ background-image: linear-gradient(to right bottom, #71a084, #74ab8a, #76b691, #79c297, #7bcd9d, #77d7b4, #77e0cb, #7ce9e1, #9fedfd, #caf1ff, #edf6ff, #ffffff);
+     border: 5px inset #7EDDA5 ;
+ }
+
+ #uppgifter {
+   border: 7px inset #7EDDA5 ;
+   width: 100%;
+   font-size: 8px;
+   color: #147D3F;
+
+
+
+ }
+
+ button:hover {
+   font-variant: small-caps;
+   background-color: lightgrey;
+   cursor: pointer;
+ }
+
+#headerbild {
+  opacity: 0.75;
+  position: absolute;
+  height: auto;
+  width: 100%;
+  margin: -10px;
+
+}
+
+#headertext {
+  position: absolute;
+  margin-top: 10%;
+  margin-left: 10%;
+  font-size: 180%;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+
+}
+
+#header {
+  margin: 10px;
+  height: 480px;
+  overflow: hidden;
+
+
+
+}
+
+h1, h3 {
+  color: #7EDDA5;
+  font-variant: small-caps;
+}
+
+ button,h1,h2,h3 {
+   margin: 40px;
+ }
