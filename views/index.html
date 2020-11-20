@@ -1,150 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+<script src="https://vuejs.org/js/vue.js"></script>
 
 <head>
 
+  <script src="/socket.io/socket.io.js" defer></script>
+
+  <script defer type="text/javascript" src="js/menu.js"></script>
+  <script defer src="js/js_script.js"></script>
+  <script defer src="js/vue_script.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+  <!-- kod för kartan-->
+  <link rel="stylesheet" href="css/deli-very.css">
+
+  <!-- kod för kartan-->
 
 
-  <center>
+  <title>BestBurgers In The World</title>
+  <meta charset="utf-8" />
 
-    <link rel="stylesheet" type="text/css" href="/css/style.css">
 
-    <title>BestBurgers In The World</title>
-    <meta charset="utf-8" />
 </head>
 
 
 
 <body>
-  <main>
+  <main id="allt">
     <section id="header">
-      <figure id="headerbild"><img src="https://bazarsazar.com/wp-content/uploads/2019/08/JIL-Cooking-Header.jpg" width="1500"
-      > </figure>
+      <figure id="headerbild"><img src="https://bazarsazar.com/wp-content/uploads/2019/08/JIL-Cooking-Header.jpg" width="1500"> </figure>
+
       <section id="headertext">
-        <center><h3> Välkommen till Världens bästa onlinerestaurang! </h3>
-        <center><h1> Kajsas Burgare</h1>
+        <center>
+          <h3> Välkommen till Världens bästa onlinerestaurang! </h3>
 
+          <h1> Kajsas Burgare</h1>
+        </center>
       </section>
+
     </section>
 
-    <section id="val">
-      <h2> Välj din burgare </h2>
-      <h4> Vi har bara goda burgare, här kan du välja vilken du vill ha</h4 </table>
+    <section id="burgarInfo">
+
+      <div>
+        <h2> Välj din burgare: </h2>
+        <ul id="Val">
+          <center>
+            <div class="wrapper">
+
+              <div v-for="burger in burgers" :class="['brg', burgers.burgerID]">
+
+                <h4>{{burger.burgerName}}</h4>
+                <div><img :src="burger.bild" id='burgerPic' width="200" height="200"></div>
+                <div>
+                  <section class="ingredienser">
+                    <h5>{{burger.ingridients}}</h5>
+                    <div v-if=burger.gluten!=false>
+                      <h6>(gluten)</h6>
+                    </div>
+                    <div v-if=burger.lactose!=false>
+                      <h6>(laktos)</h6>
+                    </div>
+                    <input type="checkbox" class="burgerCheckbox" name="burgerBox" :value=burger.burgerName>Välj
+                  </section>
+                </div>
 
 
-      <table>
-        <thead>
-          <tr>
-            <th>Kajsas Lyxiga</th>
-            <th>Kajsas Favorit</th>
-            <th>Kajsas Billiga</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><img src="https://www.oliviascuisine.com/wp-content/uploads/2015/05/blue-cheese-burger-4-683x1024.jpg" width="300"></td>
-            <td><img src="https://www.oliviascuisine.com/wp-content/uploads/2016/09/apple-bacon-brie-burger.jpg" width="300"></td>
-            <td><img src="https://www.oliviascuisine.com/wp-content/uploads/2020/04/homemade-sloppy-joes-recipe-683x1024.jpg" width="300"></td>
-          </tr>
 
+              </div>
+            </div>
+        </ul>
 
-          <tr>
-            <td>
-              <ul>
-                <section class="ingredienser">
-                  <li>Sås</li>
-                  <li>Tomat</li>
-                  <li>Sallad</li>
-                </section>
-              </ul>
-            </td>
-
-            <td>
-              <ul>
-                <section class="ingredienser">
-                  <li>Äpple</li>
-                  <li>Bacon</li>
-                  <li>Sallad</li>
-                </section>
-              </ul>
-            </td>
-
-            <td>
-              <ul>
-                <section class="ingredienser">
-                  <li>Köttfärs</li>
-                  <li>Salsa</li>
-              </ul>
-            </td>
     </section>
-    </tr>
 
 
 
-    </tbody>
+    <h4> Vi har bara goda burgare!</h4>
 
-    </table>
-    </section>
+
 
     <section id="uppgifter">
-      <form>
-        <h2> Fyll i dina uppgifter </h2>
+      <center>
         <form>
+          <h2> Fyll i dina uppgifter </h2>
+          <form>
+            <p>
+              <label for="fullname">Fullständigt Namn</label><br>
+              <input type="text" id="fullname" name="fn" required="required" placeholder="Fullständigt namn">
+            </p>
+            <p>
+              <label for="email">Mejladress</label><br>
+              <input type="text" id="email" name="email" placeholder="Mejladress">
+            </p>
+          </form>
+
+
           <p>
-            <label for="full name">Fullständigt Namn</label><br>
-            <input type="text" id="full name" name="fn" required="required" placeholder="Fullständigt namn">
+            <label for="payment">Payment Method</label><br>
+            <select id="payment" name="pym">
+              <option>Klarna</option>
+              <option selected="selected">Swish</option>
+              <option>Kontant vid avlämning</option>
+            </select>
           </p>
+
           <p>
-            <label for="email">Mejladress</label><br>
-            <input type="text" id="email" name="email" placeholder="Mejladress">
+            <label for="Vill ej ange">Vill ej ange</label>
+            <input checked="checked" type="radio" value="Vill ej ange" id="Vill ej ange" name="gender">
+
+            <label for="Kvinna">Kvinna</label>
+            <input type="radio" id="Kvinna" value="Kvinna" name="gender">
+
+            <label for="Man">Man</label>
+            <input type="radio" class="gnd" value="Man" name="gender">
           </p>
-          <p>
-            <label for="street">Gata</label><br>
-            <input type="text" id="street" name="street" placeholder="Gata">
-          </p>
-          <p>
-            <label for="housenumber">Husnmmer</label><br>
-            <input type="number" id="housenumber" name="hn" placeholder="Husnummer">
+
         </form>
-        </p>
 
-        <p>
-          <label for="payment">Payment Method</label><br>
-          <select id="payment" name="pym">
-            <option>Klarna</option>
-            <option selected="selected">Swish</option>
-            <option>Kontant vid avlämning</option>
-          </select>
-        </p>
+      </center>
+    </section>
 
-        <p>
-          <label for="Vill ej ange">Vill ej ange</label><br>
-          <input checked="checked" type="radio" id="gd" name="gender">
 
-        </p>
 
-        <p>
-          <label for="Kvinna">Kvinna</label><br>
-          <input type="radio" id="gd" name="gender">
+    <section id=mapSection>
 
-        </p>
-
-        <p>
-          <label for="Man">Man</label><br>
-          <input type="radio" id="gd" name="gender">
-
-        </p>
-
-      </form>
+      <h1> Click in the map! </h1>
+      <a href="/dispatcher" target="_blank">Open dispatcher in new window</a>.
+      <div class="view-box">
+        <div id="dots" v-on:click="displayOrder">
+          <div v-bind:style="{ left: mapPin.details.x + 'px', top: mapPin.details.y + 'px'}">
+            L
+          </div>
+        </div>
+      </div>
 
     </section>
 
-    <button type="submit"><img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/57560/thumbs-up-emoji-clipart-md.png" width="15"> Beställ</button>
+    <div id='confirmation'>
+      <button v-on:click='addOrder' type="submit"><img src="https://creazilla-store.fra1.digitaloceanspaces.com/emojis/57560/thumbs-up-emoji-clipart-md.png" width="15"> Beställ</button>
+      <section id='confirmationTextBurger'>
 
+      </section>
+      <section id='confirmationText'>
 
+      </section>
+    </div>
 
 
 </body>
+</main>
 <hr>
 <footer>
   <h6> Du når oss även på bestburgers@gmail.com </h6>

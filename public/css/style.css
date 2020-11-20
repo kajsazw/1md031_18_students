@@ -19,18 +19,14 @@ header {
 
 
 
- table {
-   width: 100%;
-   margin: 10px;
- }
-
-
 
  .ingredienser {
-   font-weight: bold;
+   font-weight: lighter;
+   font-size: 10px
+   margin: 15px
  }
 
- #val {
+ #burgarInfo {
    color: white;
  background-image: linear-gradient(to right bottom, #71a084, #74ab8a, #76b691, #79c297, #7bcd9d, #77d7b4, #77e0cb, #7ce9e1, #9fedfd, #caf1ff, #edf6ff, #ffffff);
      border: 5px inset #7EDDA5 ;
@@ -76,6 +72,28 @@ header {
   overflow: hidden;
 
 
+
+}
+
+#confirmationText
+{
+  color: black;
+}
+
+
+.wrapper {
+  display: grid;
+     grid-gap: 10px;
+     grid-template-columns: 300px 300px 300px;
+     background-color:##FFF8DC ;
+     color: #444;
+
+}
+
+.brg {
+  background-color:#FFF8DC;
+  border: 5px double black;
+  padding: 15px;
 
 }
 
